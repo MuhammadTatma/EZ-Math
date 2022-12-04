@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">EZ-Math</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="et_nama_lengkap">Nama Lengkap</string>
+    <string name="et_email">Email ID</string>
+    <string name="et_pw">Password</string>
+    <string name="sudah_punya_akun">Sudah punya akun?</string>
+    <string name="belum_punya_akun">Belum punya akun?</string>
+    <string name="login">Login</string>
+    <string name="img_contentdest_signup">Image Header</string>
 </resources>
