@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.Home">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:layout_marginLeft="43dp"
+        android:text="Halo Sumbul,"
+        android:textSize="24sp"
+        android:fontFamily="@font/interbold"
+        android:textColor="@color/Color_1"
+
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:layout_marginLeft="63dp"
+        android:fontFamily="@font/intermedium"
+        android:textColor="@color/Color_1"
+        android:textSize="24sp"
+        android:text="Lanjut latihan yuk ^^" />
+</RelativeLayout>
