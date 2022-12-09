@@ -50,6 +50,7 @@
                 android:textColor="@color/Color_1"/>
 
             <EditText
+                android:id="@+id/namaLengkap"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
@@ -64,6 +65,7 @@
                 android:inputType="textCapWords"/>
 
             <EditText
+                android:id="@+id/emailID"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
@@ -78,6 +80,7 @@
                 android:inputType="textEmailAddress" />
 
             <EditText
+                android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
@@ -92,6 +95,7 @@
                 android:inputType="textPassword" />
 
             <Button
+                android:id="@+id/signupBtn"
                 android:layout_width="200dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
@@ -119,6 +123,7 @@
                     android:layout_marginEnd="8dp"
                     />
                 <TextView
+                    android:id="@+id/loginlink"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/login"
@@ -128,6 +133,15 @@
                     />
 
             </LinearLayout>
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/pbCircular"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:visibility="gone"
+                />
         </LinearLayout>
         </androidx.cardview.widget.CardView>
 
