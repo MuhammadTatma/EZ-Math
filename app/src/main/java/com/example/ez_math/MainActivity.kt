@@ -11,29 +11,26 @@ import com.example.ez_math.Fragments.Home
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    internal var selectedFragment: Fragment? = null
-    private lateinit var textView: TextView
+
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_homeLatihan -> {
-                selectedFragment = Home()
+                moveToFragment(Home())
+                return@OnNavigationItemSelectedListener true;
             }
             R.id.navigation_belajar -> {
-                selectedFragment = FragmentBelajar()
+                moveToFragment(FragmentBelajar())
+                return@OnNavigationItemSelectedListener true;
             }
             R.id.navigation_pencapaian -> {
-                selectedFragment = FragmentPencapaian()
+                moveToFragment(FragmentPencapaian())
+                return@OnNavigationItemSelectedListener true;
             }
             R.id.navigation_profile -> {
-                selectedFragment = FragmentProfile()
+                moveToFragment(FragmentProfile())
+                return@OnNavigationItemSelectedListener true;
             }
-        }
-        if(selectedFragment != null){
-            supportFragmentManager.beginTransaction().replace(
-                R.id.fragmentContainer,
-                selectedFragment!!
-            ).commit()
         }
         false
     }
@@ -49,9 +46,14 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        supportFragmentManager.beginTransaction().replace(
-            R.id.fragmentContainer,Home()
-        ).commit()
+        moveToFragment(Home())
+    }
+
+    private fun moveToFragment(fragment: Fragment)
+    {
+        val fragmentTrans = supportFragmentManager.beginTransaction()
+        fragmentTrans.replace(R.id.fragmentContainer, fragment)
+        fragmentTrans.commit()
     }
 
 

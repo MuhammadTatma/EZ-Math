@@ -3,13 +3,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.FragmentBelajar">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Fragment Belajar"
-        android:textSize="40sp"/>
+        android:layout_height="wrap_content"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"
+        android:orientation="vertical">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="43dp"
+            android:text="Mari kita mulai"
+            android:textSize="24sp"
+            android:fontFamily="@font/interbold"
+            android:textColor="@color/Color_1"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Belajar, Sumbul !"
+            android:textSize="24sp"
+            android:fontFamily="@font/interbold"
+            android:textColor="@color/Color_1"
+
+            />
+
+        <ExpandableListView
+            android:id="@+id/expandableViewMateriKelas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:groupIndicator="@null"
+            android:scrollbars="none"
+            />
+
+
+
+
+    </LinearLayout>
 </FrameLayout>
