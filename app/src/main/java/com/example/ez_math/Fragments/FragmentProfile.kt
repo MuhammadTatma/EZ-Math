@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.ez_math.EditProfileActivity
+import com.example.ez_math.LoginActivity
 import com.example.ez_math.R
+import com.google.firebase.auth.FirebaseAuth
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -42,6 +44,14 @@ class FragmentProfile : Fragment() {
         val btnEdit = view.findViewById<TextView>(R.id.btnEdit)
         btnEdit.setOnClickListener {
             startActivity(Intent(context, EditProfileActivity::class.java))
+        }
+        val btnLogout = view.findViewById<TextView>(R.id.btnLogout)
+        btnLogout.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+
+            val intent = Intent(context, LoginActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
         }
         return view
     }

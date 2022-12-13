@@ -15,7 +15,6 @@ class LoginActivity : AppCompatActivity() {
         signuplink.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
         }
-
     }
 
     //kalo user udah login langsung dipindah ke halaman utama
@@ -29,4 +28,6 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
     }
+
+
 }
