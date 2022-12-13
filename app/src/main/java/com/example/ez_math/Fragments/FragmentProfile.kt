@@ -1,10 +1,13 @@
 package com.example.ez_math.Fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import com.example.ez_math.EditProfileActivity
 import com.example.ez_math.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -34,8 +37,13 @@ class FragmentProfile : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val view = inflater.inflate(R.layout.fragment_profile, container, false)
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        val btnEdit = view.findViewById<TextView>(R.id.btnEdit)
+        btnEdit.setOnClickListener {
+            startActivity(Intent(context, EditProfileActivity::class.java))
+        }
+        return view
     }
 
     companion object {
