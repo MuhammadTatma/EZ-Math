@@ -2,7 +2,9 @@ package com.example.ez_math
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.ez_math.Fragments.FragmentBelajar
 import com.example.ez_math.Fragments.FragmentPencapaian
@@ -46,8 +48,6 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
         navView.setOnItemSelectedListener(onNavigationItemSelectedListener)
-
-
 
         supportFragmentManager.beginTransaction().replace(
             R.id.fragmentContainer,Home()
