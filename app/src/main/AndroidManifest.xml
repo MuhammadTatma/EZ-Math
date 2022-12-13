@@ -17,6 +17,18 @@
             android:name=".EditProfileActivity"
             android:exported="false" />
         <activity
+            android:name=".DetailPencapaian"
+            android:exported="false" />
+        <activity
+            android:name=".HasilLatihan"
+            android:exported="false"
+            android:parentActivityName=".Fragments.Home"/>
+        <activity
+            android:name=".LatihanActivity"
+            android:exported="false"
+            android:parentActivityName=".Fragments.Home"/>
+
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>

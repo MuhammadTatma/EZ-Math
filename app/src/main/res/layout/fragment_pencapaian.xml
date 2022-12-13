@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.FragmentPencapaian"
-    android:background="@color/Color_3">
+    android:background="@drawable/bg_gradient_pencapaian">
 
     <!--    android:background="@drawable/background_pencapaian"-->
 
@@ -33,7 +33,7 @@
         android:src="@drawable/thropy" />
 
     <ImageView
-        android:id="@+id/imgView1"
+        android:id="@+id/imgViewKelas1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/kelas_1"
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/kelas_2"
         android:layout_marginTop="150dp"
-        android:layout_marginLeft="215dp" />
+        android:layout_marginLeft="200dp" />
 
     <ImageView
         android:id="@+id/imgView3"
@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/kelas_4"
         android:layout_marginTop="300dp"
-        android:layout_marginLeft="215dp" />
+        android:layout_marginLeft="200dp" />
 
     <ImageView
         android:id="@+id/imgView5"
@@ -78,6 +78,6 @@
         android:layout_height="wrap_content"
         android:src="@drawable/kelas_6"
         android:layout_marginTop="450dp"
-        android:layout_marginLeft="215dp" />
+        android:layout_marginLeft="200dp" />
 
 </FrameLayout>
