@@ -1,30 +1,274 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.Home">
+    tools:context=".Fragments.Home"
+    android:background="@drawable/gradient_bg_cream">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="43dp"
-        android:layout_marginLeft="43dp"
-        android:text="Halo Sumbul,"
-        android:textSize="24sp"
-        android:fontFamily="@font/interbold"
-        android:textColor="@color/Color_1"
+    <ScrollView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        />
+            <TextView
+                android:id="@+id/tvHalo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="35dp"
+                android:text="Halo,"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:textColor="@color/Color_1"
+                android:fontFamily="@font/interbold"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:layout_marginLeft="63dp"
-        android:fontFamily="@font/intermedium"
-        android:textColor="@color/Color_1"
-        android:textSize="24sp"
-        android:text="Lanjut latihan yuk ^^" />
-</RelativeLayout>
+            <TextView
+                android:id="@+id/tvNamaUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="35dp"
+                android:text="Sumbul"
+                app:layout_constraintStart_toEndOf="@+id/tvHalo"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:textColor="@color/Color_1"
+                android:fontFamily="@font/interbold"/>
+
+            <TextView
+                android:id="@+id/tvLanjut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="65dp"
+                android:text="Lanjut latihan yuk ^^"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHalo"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/Color_1"
+                android:fontFamily="@font/intermedium"/>
+
+            <ImageView
+                android:id="@+id/ivKelas1"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="50dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvLanjut"
+                app:srcCompat="@drawable/kelas_1" />
+
+            <ImageView
+                android:id="@+id/ivKelas2"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_marginTop="275dp"
+                android:layout_marginEnd="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/kelas_2" />
+
+            <ImageView
+                android:id="@+id/ivKelas3"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="140dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/ivKelas2"
+                app:srcCompat="@drawable/kelas_3" />
+
+            <ImageView
+                android:id="@+id/ivKelas4"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_marginTop="140dp"
+                android:layout_marginEnd="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/ivKelas3"
+                app:srcCompat="@drawable/kelas_4" />
+
+            <ImageView
+                android:id="@+id/ivKelas5"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="140dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/ivKelas4"
+                app:srcCompat="@drawable/kelas_5" />
+
+            <ImageView
+                android:id="@+id/ivKelas6"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_marginTop="140dp"
+                android:layout_marginEnd="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/ivKelas5"
+                app:srcCompat="@drawable/kelas_6" />
+
+            <ImageView
+                android:id="@+id/ivPanah1"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="12dp"
+                app:layout_constraintBottom_toTopOf="@+id/ivKelas2"
+                app:layout_constraintStart_toEndOf="@+id/ivKelas1"
+                app:srcCompat="@drawable/panah_1_2" />
+
+            <ImageView
+                android:id="@+id/ivPanah2"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/ivKelas1"
+                app:layout_constraintEnd_toStartOf="@+id/ivKelas2"
+                app:srcCompat="@drawable/panah_2_3" />
+
+            <ImageView
+                android:id="@+id/ivPanah3"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="12dp"
+                app:layout_constraintBottom_toTopOf="@+id/ivKelas4"
+                app:layout_constraintStart_toEndOf="@+id/ivKelas3"
+                app:srcCompat="@drawable/panah_3_4" />
+
+            <ImageView
+                android:id="@+id/ivPanah4"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="40dp"
+                app:layout_constraintTop_toBottomOf="@+id/ivKelas3"
+                app:layout_constraintEnd_toStartOf="@+id/ivKelas4"
+                app:srcCompat="@drawable/panah_4_5" />
+
+            <ImageView
+                android:id="@+id/ivPanah5"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="12dp"
+                app:layout_constraintBottom_toTopOf="@+id/ivKelas6"
+                app:layout_constraintStart_toEndOf="@+id/ivKelas5"
+                app:srcCompat="@drawable/panah_5_6" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="132dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/bee" />
+
+            <TextView
+                android:id="@+id/tvStatus1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:text="Belum Dikerjakan"
+                android:textSize="12sp"
+                android:textColor="@color/Color_1"
+                app:layout_constraintBottom_toBottomOf="@+id/ivKelas1"
+                app:layout_constraintEnd_toEndOf="@+id/ivKelas1"
+                app:layout_constraintStart_toStartOf="@+id/ivKelas1" />
+
+            <TextView
+                android:id="@+id/tvStatus2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:text="Belum Dikerjakan"
+                android:textSize="12sp"
+                android:textColor="@color/Color_1"
+                app:layout_constraintBottom_toBottomOf="@+id/ivKelas2"
+                app:layout_constraintEnd_toEndOf="@+id/ivKelas2"
+                app:layout_constraintStart_toStartOf="@+id/ivKelas2" />
+
+            <TextView
+                android:id="@+id/tvStatus3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:text="Belum Dikerjakan"
+                android:textSize="12sp"
+                android:textColor="@color/Color_1"
+                app:layout_constraintBottom_toBottomOf="@+id/ivKelas3"
+                app:layout_constraintEnd_toEndOf="@+id/ivKelas3"
+                app:layout_constraintStart_toStartOf="@+id/ivKelas3" />
+
+            <TextView
+                android:id="@+id/tvStatus4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:text="Belum Dikerjakan"
+                android:textSize="12sp"
+                android:textColor="@color/Color_1"
+                app:layout_constraintBottom_toBottomOf="@+id/ivKelas4"
+                app:layout_constraintEnd_toEndOf="@+id/ivKelas4"
+                app:layout_constraintStart_toStartOf="@+id/ivKelas4" />
+
+            <TextView
+                android:id="@+id/tvStatus5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:text="Belum Dikerjakan"
+                android:textSize="12sp"
+                android:textColor="@color/Color_1"
+                app:layout_constraintBottom_toBottomOf="@+id/ivKelas5"
+                app:layout_constraintEnd_toEndOf="@+id/ivKelas5"
+                app:layout_constraintStart_toStartOf="@+id/ivKelas5" />
+
+            <TextView
+                android:id="@+id/tvStatus6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:text="Belum Dikerjakan"
+                android:textSize="12sp"
+                android:textColor="@color/Color_1"
+                app:layout_constraintBottom_toBottomOf="@+id/ivKelas6"
+                app:layout_constraintEnd_toEndOf="@+id/ivKelas6"
+                app:layout_constraintStart_toStartOf="@+id/ivKelas6" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</FrameLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".Fragments.HomeFragment">-->
+
+<!--    &lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="Fragment Belajar"-->
+<!--        android:textSize="40sp"/>-->
+
+<!--</FrameLayout>-->
