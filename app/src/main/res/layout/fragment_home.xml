@@ -67,7 +67,7 @@
                 android:layout_marginTop="50dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvLanjut"
-                app:srcCompat="@drawable/kelas_1" />
+                app:srcCompat="@drawable/kelas_1_home" />
 
             <ImageView
                 android:id="@+id/ivKelas2"
@@ -77,7 +77,7 @@
                 android:layout_marginEnd="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/kelas_2" />
+                app:srcCompat="@drawable/kelas_2_home" />
 
             <ImageView
                 android:id="@+id/ivKelas3"
@@ -87,7 +87,7 @@
                 android:layout_marginTop="140dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/ivKelas2"
-                app:srcCompat="@drawable/kelas_3" />
+                app:srcCompat="@drawable/kelas_3_home" />
 
             <ImageView
                 android:id="@+id/ivKelas4"
@@ -97,7 +97,7 @@
                 android:layout_marginEnd="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/ivKelas3"
-                app:srcCompat="@drawable/kelas_4" />
+                app:srcCompat="@drawable/kelas_4_home" />
 
             <ImageView
                 android:id="@+id/ivKelas5"
@@ -107,7 +107,7 @@
                 android:layout_marginTop="140dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/ivKelas4"
-                app:srcCompat="@drawable/kelas_5" />
+                app:srcCompat="@drawable/kelas_5_home" />
 
             <ImageView
                 android:id="@+id/ivKelas6"
@@ -117,7 +117,7 @@
                 android:layout_marginEnd="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/ivKelas5"
-                app:srcCompat="@drawable/kelas_6" />
+                app:srcCompat="@drawable/kelas_6_home" />
 
             <ImageView
                 android:id="@+id/ivPanah1"
