@@ -1,10 +1,13 @@
 package com.example.ez_math.Fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import com.example.ez_math.LatihanActivity
 import com.example.ez_math.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -56,5 +59,17 @@ class Home : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    val KUNCI = "BuatKeLatihan"
+    fun fKeLatihan(view: View){
+//        val imgKelas = findViewById<ImageView>(R.id.ivKelas1)
+//        val kelas = imgKelas.tag.toString()
+//
+//        val intentKeLatihan = Intent(this, LatihanActivity::class.java)
+//        intentKeLatihan.apply {
+//            putExtra(KUNCI, kelas)
+//        }
+//        startActivity(intentKeLatihan)
     }
 }
