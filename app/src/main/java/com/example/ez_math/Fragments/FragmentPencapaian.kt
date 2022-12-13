@@ -1,13 +1,18 @@
-package com.example.ez_math.Fragments
+    package com.example.ez_math.Fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.Toast
+import com.example.ez_math.DetailPencapaian
 import com.example.ez_math.R
+import java.nio.file.Files.find
 
-// TODO: Rename parameter arguments, choose names that match
+    // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -24,6 +29,7 @@ class FragmentPencapaian : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -34,8 +40,13 @@ class FragmentPencapaian : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val view = inflater.inflate(R.layout.fragment_pencapaian, container, false)
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pencapaian, container, false)
+        val kelas1 = view.findViewById<ImageView>(R.id.imgViewKelas1)
+        kelas1.setOnClickListener{
+            startActivity(Intent(context, DetailPencapaian::class.java))
+        }
+        return view
     }
 
     companion object {
