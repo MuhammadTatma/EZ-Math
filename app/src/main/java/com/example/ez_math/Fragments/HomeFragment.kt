@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import com.example.ez_math.DetailPencapaian
 import com.example.ez_math.LatihanActivity
 import com.example.ez_math.R
 
@@ -38,7 +39,13 @@ class Home : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        // Inflate the layout for this fragment
+        val  soal1= view.findViewById<ImageView>(R.id.ivKelas1)
+        soal1.setOnClickListener{
+            startActivity(Intent(context, LatihanActivity::class.java))
+        }
+        return view
     }
 
     companion object {

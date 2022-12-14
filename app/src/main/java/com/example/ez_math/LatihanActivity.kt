@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,13 +17,20 @@ class LatihanActivity : AppCompatActivity() {
     lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
     lateinit var adapter: QuizAdapter
     private var quizList = mutableListOf<Quiz>()
-    var rvLatihan: RecyclerView = findViewById(R.id.rvLatihan)
+    //var rvLatihan: RecyclerView = findViewById(R.id.rvLatihan)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_latihan)
         setUpViews()
         populateDummyData()
+
+        val btnKembali = findViewById<Button>(R.id.btnRapli) as Button
+
+        btnKembali.setOnClickListener{
+            val intent = Intent(this, HasilLatihan::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun populateDummyData() {
@@ -38,8 +48,8 @@ class LatihanActivity : AppCompatActivity() {
 
     private fun setUpRecyclerView() {
         adapter = QuizAdapter(this, quizList)
-        rvLatihan.layoutManager = GridLayoutManager(this, 2)
-        rvLatihan.adapter = adapter
+//        rvLatihan.layoutManager = GridLayoutManager(this, 2)
+//        rvLatihan.adapter = adapter
     }
 
     fun setUpDrawerLayout() {
