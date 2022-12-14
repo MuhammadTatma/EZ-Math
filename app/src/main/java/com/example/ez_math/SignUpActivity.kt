@@ -76,7 +76,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun myToast(text: String){
-        Toast.makeText(applicationContext, text, Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext, text, Toast.LENGTH_LONG).show()
     }
 
     private fun saveUserIngpo(namaLengkap:String, email:String){
