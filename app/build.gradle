@@ -46,4 +46,16 @@ dependencies {
 
     // Depedencies for circular ImageView
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // Dependencies for Stopwatch
+//    val appsearch_version = "1.1.0-alpha02"
+
+//    implementation("androidx.appsearch:appsearch:$appsearch_version")
+    // Use annotationProcessor instead of kapt if writing Java classes
+//    kapt("androidx.appsearch:appsearch-compiler:$appsearch_version")
+
+//    implementation("androidx.appsearch:appsearch-local-storage:$appsearch_version")
+    // PlatformStorage is compatible with Android 12+ devices, and offers additional features
+    // to LocalStorage.
+//    implementation("androidx.appsearch:appsearch-platform-storage:$appsearch_version")
 }

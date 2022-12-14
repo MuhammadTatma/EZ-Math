@@ -1,5 +1,6 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,7 +8,6 @@
     android:background="@drawable/gradient_bg_cream">
 
     <ScrollView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -65,9 +65,11 @@
                 android:layout_height="170dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="50dp"
+                android:tag="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvLanjut"
-                app:srcCompat="@drawable/kelas_1_home" />
+                app:srcCompat="@drawable/kelas_1_home"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
             <ImageView
                 android:id="@+id/ivKelas2"
@@ -75,9 +77,12 @@
                 android:layout_height="170dp"
                 android:layout_marginTop="275dp"
                 android:layout_marginEnd="30dp"
+                android:onClick="fLatihan"
+                android:tag="2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/kelas_2_home" />
+                app:srcCompat="@drawable/kelas_2_home"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageView
                 android:id="@+id/ivKelas3"
@@ -85,9 +90,12 @@
                 android:layout_height="170dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="140dp"
+                android:onClick="fLatihan"
+                android:tag="3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/ivKelas2"
-                app:srcCompat="@drawable/kelas_3_home" />
+                app:srcCompat="@drawable/kelas_3_home"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageView
                 android:id="@+id/ivKelas4"
@@ -95,9 +103,12 @@
                 android:layout_height="170dp"
                 android:layout_marginTop="140dp"
                 android:layout_marginEnd="30dp"
+                android:onClick="fLatihan"
+                android:tag="4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/ivKelas3"
-                app:srcCompat="@drawable/kelas_4_home" />
+                app:srcCompat="@drawable/kelas_4_home"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
             <ImageView
                 android:id="@+id/ivKelas5"
@@ -105,9 +116,12 @@
                 android:layout_height="170dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="140dp"
+                android:onClick="fLatihan"
+                android:tag="5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/ivKelas4"
-                app:srcCompat="@drawable/kelas_5_home" />
+                app:srcCompat="@drawable/kelas_5_home"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageView
                 android:id="@+id/ivKelas6"
@@ -115,6 +129,8 @@
                 android:layout_height="170dp"
                 android:layout_marginTop="140dp"
                 android:layout_marginEnd="30dp"
+                android:onClick="fLatihan"
+                android:tag="6"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/ivKelas5"
                 app:srcCompat="@drawable/kelas_6_home" />

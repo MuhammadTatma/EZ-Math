@@ -33,12 +33,41 @@ class Home : Fragment() {
         }
     }
 
+    var pilihanKelas: String = ""
+    val KUNCI = "BuatLatihan"
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        val ivKelas1 = view.findViewById<ImageView>(R.id.ivKelas1)
+        val ivKelas2 = view.findViewById<ImageView>(R.id.ivKelas2)
+        val ivKelas3 = view.findViewById<ImageView>(R.id.ivKelas3)
+        val ivKelas4 = view.findViewById<ImageView>(R.id.ivKelas4)
+        val ivKelas5 = view.findViewById<ImageView>(R.id.ivKelas5)
+        val ivKelas6 = view.findViewById<ImageView>(R.id.ivKelas6)
+
+        ivKelas1.setOnClickListener {
+            fLatihan(ivKelas1)
+        }
+        ivKelas2.setOnClickListener {
+            fLatihan(ivKelas2)
+        }
+        ivKelas3.setOnClickListener {
+            fLatihan(ivKelas3)
+        }
+        ivKelas4.setOnClickListener {
+            fLatihan(ivKelas4)
+        }
+        ivKelas5.setOnClickListener {
+            fLatihan(ivKelas5)
+        }
+        ivKelas6.setOnClickListener {
+            fLatihan(ivKelas6)
+        }
+
+        return view
     }
 
     companion object {
@@ -61,15 +90,15 @@ class Home : Fragment() {
             }
     }
 
-    val KUNCI = "BuatKeLatihan"
-    fun fKeLatihan(view: View){
-//        val imgKelas = findViewById<ImageView>(R.id.ivKelas1)
-//        val kelas = imgKelas.tag.toString()
-//
-//        val intentKeLatihan = Intent(this, LatihanActivity::class.java)
-//        intentKeLatihan.apply {
-//            putExtra(KUNCI, kelas)
-//        }
-//        startActivity(intentKeLatihan)
+
+    fun fLatihan(view: View){
+        pilihanKelas = view.tag.toString()
+
+        val intentKeLatihan = Intent(context, LatihanActivity::class.java)
+        intentKeLatihan.apply {
+            putExtra(KUNCI, "1")
+        }
+        startActivity(intentKeLatihan)
+
     }
 }
