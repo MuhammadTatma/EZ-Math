@@ -145,22 +145,22 @@
                         android:id="@+id/rbA1"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
-                        android:text="Jawaban_1" />
+                        android:text="Jawaban_1"/>
                     <RadioButton
                         android:id="@+id/rbA2"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
-                        android:text="Jawaban_2" />
+                        android:text="Jawaban_2"/>
                     <RadioButton
                         android:id="@+id/rbA3"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
-                        android:text="Jawaban_3" />
+                        android:text="Jawaban_3"/>
                     <RadioButton
                         android:id="@+id/rbA4"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
-                        android:text="Jawaban_4" />
+                        android:text="Jawaban_4"/>
                 </RadioGroup>
 
             </LinearLayout>
@@ -176,32 +176,64 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp">
 
-            <Button
-                android:layout_width="150dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:backgroundTint="@color/Color_2"
-                android:text="Sebelumnya"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                app:cornerRadius="20dp"
-                tools:layout_editor_absoluteX="69dp"
-                tools:layout_editor_absoluteY="104dp" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="411dp"
+                android:layout_height="wrap_content">
 
-            <Button
-                android:layout_width="150dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:backgroundTint="@color/Color_2"
-                android:text="Setelahnya"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                android:layout_marginStart="30dp"
-                android:onClick="fHasil"
-                app:cornerRadius="20dp"
-                tools:layout_editor_absoluteX="69dp"
-                tools:layout_editor_absoluteY="104dp" />
+                <Button
+                    android:visibility="invisible"
+                    android:id="@+id/btnPrev"
+                    android:layout_width="150dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/Color_2"
+                    android:text="Sebelumnya"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="40dp"
+                    app:cornerRadius="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
+                <Button
+                    android:visibility="invisible"
+                    android:id="@+id/btnNext"
+                    android:layout_width="150dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="40dp"
+                    android:backgroundTint="@color/Color_2"
+                    android:text="Selanjutnya"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:cornerRadius="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="DuplicateClickableBoundsCheck" />
+
+                <Button
+                    android:visibility="invisible"
+                    android:id="@+id/btnFin"
+                    android:layout_width="150dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/Color_2"
+                    android:onClick="fHasil"
+                    android:text="Selesai"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="40dp"
+                    app:cornerRadius="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

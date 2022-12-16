@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import com.example.ez_math.LatihanActivity
 import com.example.ez_math.R
+import com.example.ez_math.LatihanActivity as LatihanActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -94,10 +94,13 @@ class Home : Fragment() {
     fun fLatihan(view: View){
         pilihanKelas = view.tag.toString()
 
+//        val latihanActivity : LatihanActivity = activity as LatihanActivity
+//        latihanActivity.tvSoal.setText(pilihanKelas)
         val intentKeLatihan = Intent(context, LatihanActivity::class.java)
-        intentKeLatihan.apply {
-            putExtra(KUNCI, "1")
-        }
+//        intentKeLatihan.putExtra(KUNCI, pilihanKelas)
+//        intentKeLatihan.apply {
+//            putExtra(KUNCI, "1")
+//        }
         startActivity(intentKeLatihan)
 
     }
