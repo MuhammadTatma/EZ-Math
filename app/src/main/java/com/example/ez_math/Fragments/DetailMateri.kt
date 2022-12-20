@@ -1,10 +1,14 @@
 package com.example.ez_math.Fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.example.ez_math.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -22,6 +26,9 @@ class DetailMateri : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var tvMateriTitle:TextView
+    private lateinit var ivBacktoListMateri:ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -34,8 +41,24 @@ class DetailMateri : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val view = inflater.inflate(R.layout.fragment_detail_materi, container, false)
+        val arguments = arguments
+        val desired_string = arguments!!.getString("materi_name")
+        tvMateriTitle = view.findViewById(R.id.tvMateriTitle)
+        tvMateriTitle.setText(desired_string)
+
+        ivBacktoListMateri = view.findViewById(R.id.ivBacktoListMateri)
+        ivBacktoListMateri.setOnClickListener{
+            val fragment: Fragment = FragmentBelajar()
+            val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragmentContainer, fragment)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail_materi, container, false)
+        return view
     }
 
     companion object {

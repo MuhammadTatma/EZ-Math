@@ -1,14 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".Fragments.DetailMateri">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/ivBacktoListMateri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_arrow_back_ios_new_24"/>
+
+        <TextView
+            android:id="@+id/tvMateriTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Penjumlahan"
+            android:fontFamily="@font/interbold"
+            android:textColor="@color/Color_1"
+            android:textAlignment="center"
+
+            android:textSize="24dp"
+            />
+
+    </LinearLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+            <ImageView
+                android:id="@+id/belajarbanner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:src="@drawable/belajar_banner"
+                />
+
+
+            <TextView
+                android:layout_marginTop="24dp"
+                android:id="@+id/belajarsubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/belajarbanner"
+                android:text="Pendahuluan"
+                android:paddingLeft="32dp"
+                android:paddingRight="32dp"
+                android:fontFamily="@font/interbold"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                />
+
+            <TextView
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/belajarsubtitle"
+                app:layout_constraintEnd_toStartOf="parent"
+                android:paddingLeft="32dp"
+                android:paddingRight="32dp"
+                android:fontFamily="@font/interregular"
+                android:textColor="#343C44"
+
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet sollicitudin consequat. Pellentesque quis leo sagittis, interdum orci sagittis, tristique dolor. Nam a ex non augue malesuada sollicitudin. Nullam libero diam accumsan, elementum porttitor risus. Curabitur eleifend risus a ullamcorper eleifend. Mauris mollis nisl et metus sodales, sit amet efficitur augue tempor. Curabitur eleifend risus a ullamcorper eleifend. Mauris mollis nisl et metus sodales, sit amet efficitur augue tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet sollicitudin consequat. Pellentesque quis leo sagittis, interdum orci sagittis, tristique dolor. Nam a ex non augue malesuada sollicitudin. Nullam libero diam accumsan, elementum porttitor risus. Curabitur eleifend risus a ullamcorper eleifend. Mauris mollis nisl et metus sodales, sit amet efficitur augue tempor. Curabitur eleifend risus a ullamcorper eleifend. Mauris mollis nisl et metus sodales, sit amet efficitur augue tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet sollicitudin consequat. Pellentesque quis leo sagittis, interdum orci sagittis, tristique dolor. Nam a ex non augue malesuada sollicitudin. Nullam libero diam accumsan, elementum porttitor risus. Curabitur eleifend risus a ullamcorper eleifend. Mauris mollis nisl et metus sodales, sit amet efficitur augue tempor. Curabitur eleifend risus a ullamcorper eleifend. Mauris mollis nisl et metus sodales, sit amet efficitur augue tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet sollicitudin consequat. Pellentesque quis leo sagittis, interdum orci sagittis, tristique dolor. Nam a ex non augue malesuada sollicitudin. Nullam libero diam accumsan, elementum porttitor risus. Curabitur eleifend risus a ullamcorper eleifend. Mauris mollis nisl et metus sodales, sit amet efficitur augue tempor. Curabitur eleifend risus a ullamcorper eleifend. Mauris mollis nisl et metus sodales, sit amet efficitur augue tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet sollicitudin consequat. Pellentesque quis leo sagittis, interdum orci sagittis, tristique dolor. Nam a ex non augue malesuada sollicitudin. Nullam libero diam accumsan, elementum porttitor risus. Curabitur eleifend risus a ullamcorper eleifend. Mauris mollis nisl et metus sodales, sit amet efficitur augue tempor. Curabitur eleifend risus a ullamcorper eleifend. Mauris mollis nisl et metus sodales, sit amet efficitur augue tempor."
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>
