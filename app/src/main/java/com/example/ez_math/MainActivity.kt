@@ -1,13 +1,8 @@
 package com.example.ez_math
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcel
-import android.os.Parcelable
 import android.util.Log
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.ez_math.Fragments.FragmentBelajar
 import com.example.ez_math.Fragments.FragmentPencapaian
@@ -52,8 +47,19 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("main" , " siswanya : ${intent.getStringExtra("namaPengguna")}")
 
+        val extras = intent.extras
+        if(extras != null){
+            val value = extras.get("from")
+            when(value){
+                "detailPencapaian" -> moveToFragment(FragmentPencapaian())
+                "pengaturanProfile" -> moveToFragment(FragmentProfile())
+                else -> moveToFragment(Home())
+            }
+        }else{
+            moveToFragment(Home())
+        }
 
-        moveToFragment(Home())
+
     }
 
     private fun moveToFragment(fragment: Fragment)
