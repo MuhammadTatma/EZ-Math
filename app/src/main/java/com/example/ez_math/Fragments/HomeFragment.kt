@@ -94,13 +94,11 @@ class Home : Fragment() {
     fun fLatihan(view: View){
         pilihanKelas = view.tag.toString()
 
-//        val latihanActivity : LatihanActivity = activity as LatihanActivity
-//        latihanActivity.tvSoal.setText(pilihanKelas)
         val intentKeLatihan = Intent(context, LatihanActivity::class.java)
 //        intentKeLatihan.putExtra(KUNCI, pilihanKelas)
-//        intentKeLatihan.apply {
-//            putExtra(KUNCI, "1")
-//        }
+        intentKeLatihan.apply {
+            putExtra(KUNCI, pilihanKelas)
+        }
         startActivity(intentKeLatihan)
 
     }

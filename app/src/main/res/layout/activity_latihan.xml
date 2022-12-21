@@ -66,7 +66,6 @@
             android:layout_gravity="center"
             android:layout_marginTop="20sp"
             android:gravity="center"
-            android:text="0 / 0"
             android:textSize="18sp"
             android:textColor="@color/Color_4"
             android:fontFamily="@font/intermedium"/>
@@ -120,7 +119,6 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="35sp"
                             android:gravity="center"
-                            android:text="PERTANYAAN"
                             android:textSize="18sp"
                             android:textColor="@color/black"
                             android:fontFamily="@font/intermedium"/>
@@ -144,23 +142,19 @@
                     <RadioButton
                         android:id="@+id/rbA1"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
-                        android:text="Jawaban_1"/>
+                        android:layout_height="48dp"/>
                     <RadioButton
                         android:id="@+id/rbA2"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
-                        android:text="Jawaban_2"/>
+                        android:layout_height="48dp"/>
                     <RadioButton
                         android:id="@+id/rbA3"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
-                        android:text="Jawaban_3"/>
+                        android:layout_height="48dp"/>
                     <RadioButton
                         android:id="@+id/rbA4"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
-                        android:text="Jawaban_4"/>
+                        android:layout_height="48dp"/>
                 </RadioGroup>
 
             </LinearLayout>
@@ -222,7 +216,6 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:backgroundTint="@color/Color_2"
-                    android:onClick="fHasil"
                     android:text="Selesai"
                     android:textAllCaps="false"
                     android:textColor="@color/white"

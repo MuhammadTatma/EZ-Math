@@ -1,6 +1,9 @@
 package com.example.ez_math
 
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,10 +11,18 @@ import android.view.View
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.TextView
+import com.example.ez_math.databinding.ActivityLatihanBinding
+import com.google.common.base.Stopwatch
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.gson.Gson
+import java.util.*
+import kotlin.math.roundToInt
 
 class LatihanActivity : AppCompatActivity() {
-    lateinit var adapter: QuizAdapter
+    lateinit var firestore: FirebaseFirestore
     lateinit var tvSoal: TextView
+    lateinit var tvJmlhSoal: TextView
+    lateinit var tvWaktu: TextView
     lateinit var rbAns1: RadioButton
     lateinit var rbAns2: RadioButton
     lateinit var rbAns3: RadioButton
@@ -19,29 +30,78 @@ class LatihanActivity : AppCompatActivity() {
     lateinit var btnPrev: Button
     lateinit var btnNext: Button
     lateinit var btnFin: Button
+//    lateinit var stopwatch: Stopwatch
     var quizzes: MutableList<Quiz>? = null
     var index = 1
-    private var quizList = mutableListOf<Quiz>()
-    private var listSoal: MutableMap<String, Question>? = mutableMapOf()
-//    var stopwatch: Stopwatch
+    var listSoal: MutableMap<String, Question>? = mutableMapOf()
+    var kelasDipilih: String = ""
 
-    var question1 : Question = Question("Berapa hasil dari 1+1?", "2", "3", "1", "4", "2")
-    var question2 : Question = Question("Berapa hasil dari 1+2?", "2", "3", "1", "4", "2")
-    var question3 : Question = Question("Berapa hasil dari 1+3?", "2", "3", "1", "4", "2")
-
+    private lateinit var binding: ActivityLatihanBinding
+    private var timerStarted = false
+    private lateinit var serviceIntent: Intent
+    private var time = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_latihan)
-        populateDummyData()
         findViewId()
+        setUpFireStore()
         bindViews()
         setUpEventListener()
 
 //        val hasil: Intent = getIntent()
-        val KUNCI = "BukaLatihan"
-//        val kelasDipilih: String? = hasil.getStringExtra(KUNCI)
-        var pesan = intent.getStringExtra(KUNCI)
+//        var KUNCI = "BukaLatihan"
+//        kelasDipilih = hasil.getStringExtra(KUNCI)!!
+
+        binding = ActivityLatihanBinding.inflate(layoutInflater)
+//        setContentView(binding.root)
+
+        serviceIntent = Intent(applicationContext, TimerService::class.java)
+        registerReceiver(updateTime, IntentFilter(TimerService.TIMER_UPDATED))
+
+        startStopTimer()
+    }
+
+    private val updateTime: BroadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            time = intent.getDoubleExtra(TimerService.TIME_EXTRA, 0.0)
+            tvWaktu.text = getTimeStringFromDouble(time)
+        }
+    }
+
+    private fun getTimeStringFromDouble(time: Double): String {
+        val resultInt = time.roundToInt()
+//        val hours = resultInt % 86400 / 3600
+        val minutes = resultInt % 86400 % 3600 / 60
+        val seconds = resultInt % 86400 % 3600 % 60
+
+        return makeTimeString(minutes, seconds)
+    }
+
+    private fun makeTimeString(min: Int, sec: Int): String = String.format("%02d:%02d", min, sec)
+
+    private fun resetTimer() {
+        stopTimer()
+        time = 0.0
+        tvWaktu.text = getTimeStringFromDouble(time)
+    }
+
+    private fun startStopTimer() {
+        if(timerStarted)
+            stopTimer()
+        else
+            startTimer()
+    }
+
+    private fun stopTimer() {
+        stopService(serviceIntent)
+        timerStarted = false
+    }
+
+    private fun startTimer() {
+        serviceIntent.putExtra(TimerService.TIME_EXTRA, time)
+        startService(serviceIntent)
+        timerStarted = true
     }
 
     private fun setUpEventListener() {
@@ -50,7 +110,7 @@ class LatihanActivity : AppCompatActivity() {
             bindViews()
         }
         btnNext.setOnClickListener{
-            var questionRB = listSoal!!["q1_$index"]
+            var questionRB = listSoal!!["question$index"]
             index++
             if (questionRB != null) {
                 fRadioButton(questionRB)
@@ -58,16 +118,21 @@ class LatihanActivity : AppCompatActivity() {
             bindViews()
         }
         btnFin.setOnClickListener{
-            var questionRB = listSoal!!["q1_$index"]
+            var questionRB = listSoal!!["question$index"]
             if (questionRB != null) {
                 fRadioButton(questionRB)
             }
+            quizzes!![0].time = time
             Log.d("FINALQUIZ", listSoal.toString())
+            stopTimer()
+            fHasil()
         }
     }
 
     private fun findViewId() {
         tvSoal = findViewById<TextView>(R.id.tvSoal)
+        tvWaktu = findViewById<TextView>(R.id.tvWaktu)
+        tvJmlhSoal = findViewById<TextView>(R.id.tvJmlhSoal)
         rbAns1 = findViewById<RadioButton>(R.id.rbA1)
         rbAns2 = findViewById<RadioButton>(R.id.rbA2)
         rbAns3 = findViewById<RadioButton>(R.id.rbA3)
@@ -78,19 +143,24 @@ class LatihanActivity : AppCompatActivity() {
     }
 
     private fun setUpFireStore() {
-//        val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
-//        firestore.collection("quizzes").whereEqualTo("title", "Kelas${pesan}")
-//            .get()
-//            .addOnSuccessListener {
-//                if(it != null && !it.isEmpty){
-//                    quizzes = it.toObjects(Quiz::class.java)
-//                    listSoal = quizzes!![0].questions
-//                    bindViews()
-//                }
-//            }
+        firestore = FirebaseFirestore.getInstance()
+        firestore.collection("Quizzes").whereEqualTo("title", "kelas1")
+            .get()
+            .addOnSuccessListener {
+                if(it != null && !it.isEmpty){
+                    quizzes = it.toObjects(Quiz::class.java)
+                    listSoal = quizzes!![0].questions
+                    bindViews()
+                }
+            }
     }
 
     private fun bindViews() {
+        rbAns1.isChecked = false
+        rbAns2.isChecked = false
+        rbAns3.isChecked = false
+        rbAns4.isChecked = false
+
         btnPrev.visibility = View.GONE
         btnNext.visibility = View.GONE
         btnFin.visibility = View.GONE
@@ -105,12 +175,8 @@ class LatihanActivity : AppCompatActivity() {
             btnNext.visibility = View.VISIBLE
         }
 
-        rbAns1.isChecked = false
-        rbAns2.isChecked = false
-        rbAns3.isChecked = false
-        rbAns4.isChecked = false
-
-        val question = listSoal!!["q1_$index"]
+        tvJmlhSoal.text = "${index} / ${listSoal?.size}"
+        val question = listSoal!!["question$index"]
         question?.let {
             tvSoal.text = it.description
             rbAns1.setText(it.option1)
@@ -120,22 +186,15 @@ class LatihanActivity : AppCompatActivity() {
         }
     }
 
-    private fun populateDummyData() {
-
-        listSoal!!.put("q1_1", question1)
-        listSoal!!.put("q1_2", question2)
-        listSoal!!.put("q1_3", question3)
-        val quiz1: Quiz = Quiz("000001", "Pertanyaan 1", listSoal!!)
-        quizList.add(quiz1)
-        quizList.add(Quiz("000002", "Pertanyaan 2"))
-        quizList.add(Quiz("000003", "Pertanyaan 3"))
-        quizList.add(Quiz("000004", "Pertanyaan 4"))
-        quizList.add(Quiz("000005", "Pertanyaan 5"))
-        quizList.add(Quiz("000006", "Pertanyaan 6"))
-    }
-
-    fun fHasil(view: View){
+    val KUNCI = "HasilQuizGes"
+    fun fHasil(){
         val intentKeHasil = Intent(this, HasilLatihan::class.java)
+        val json: String = Gson().toJson(quizzes!![0])
+        Log.d("QUIZZ", json)
+        intentKeHasil.apply {
+            putExtra(KUNCI, json)
+        }
+//        intent.putExtra("QUIZ", json)
         startActivity(intentKeHasil)
     }
 
