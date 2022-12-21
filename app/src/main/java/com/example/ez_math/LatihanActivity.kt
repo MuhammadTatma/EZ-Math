@@ -10,6 +10,7 @@ import android.widget.RadioButton
 import android.widget.TextView
 
 class LatihanActivity : AppCompatActivity() {
+    private var student = com.example.ez_math.modhel.Student
     lateinit var adapter: QuizAdapter
     lateinit var tvSoal: TextView
     lateinit var rbAns1: RadioButton

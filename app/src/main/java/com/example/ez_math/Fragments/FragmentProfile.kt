@@ -11,6 +11,8 @@ import com.example.ez_math.EditProfileActivity
 import com.example.ez_math.LoginActivity
 import com.example.ez_math.R
 import com.google.firebase.auth.FirebaseAuth
+import java.text.SimpleDateFormat
+import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,6 +28,19 @@ class FragmentProfile : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private val student = com.example.ez_math.modhel.Student
+
+    private lateinit var tvNamaLengkap: TextView
+    private lateinit var tvTanggal: TextView
+    private lateinit var tvKelas: TextView
+    private lateinit var tvTotalBelajar: TextView
+    private lateinit var tvTotalXP: TextView
+    private lateinit var tvTotalLatihan:TextView
+    private lateinit var tvNamaSekolah: TextView
+    private lateinit var tvEmail: TextView
+    private lateinit var  tvTanggalahir: TextView
+    private lateinit var tvJenisKelamin:TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +68,42 @@ class FragmentProfile : Fragment() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
+
+        findView(view)
+
+
+        tvNamaLengkap.setText(student.namaLengkap)
+        tvTanggal.setText(getCurrentDate())
+        tvKelas.setText("Kelas ${student.kelas}")
+        tvTotalBelajar.setText(student.totalBelajar.toString())
+        tvTotalXP.setText(student.totalXp.toString())
+        tvTotalLatihan.setText(student.totalLatihan.toString())
+        tvNamaSekolah.setText(student.namaSekolah)
+        tvEmail.setText(student.email)
+        tvTanggalahir.setText(student.tanggalLahir)
+        tvJenisKelamin.setText(student.jenisKelamin)
         return view
+    }
+
+    private fun findView(view: View){
+        tvNamaLengkap = view.findViewById(R.id.tvNamaLengkap)
+        tvTanggal = view.findViewById(R.id.tvTanggal)
+        tvKelas = view.findViewById(R.id.tvKelas)
+        tvTotalBelajar = view.findViewById(R.id.tvTotalBelajar)
+        tvTotalXP = view.findViewById(R.id.tvTotalXP)
+        tvTotalLatihan = view.findViewById(R.id.tvTotalLatihan)
+        tvNamaSekolah = view.findViewById(R.id.tvNamaSekolah)
+        tvEmail = view.findViewById(R.id.tvEmail)
+        tvTanggalahir = view.findViewById(R.id.tvTanggalLahir)
+        tvJenisKelamin = view.findViewById(R.id.tvJenisKelamin)
+
+    }
+
+    private fun getCurrentDate(): String{
+        val time = Calendar.getInstance().time
+        val formatter = SimpleDateFormat("yyyy-MM-dd ")
+        val current = formatter.format(time)
+        return current
     }
 
     companion object {
