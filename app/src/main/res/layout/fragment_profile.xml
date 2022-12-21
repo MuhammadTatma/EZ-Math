@@ -47,6 +47,7 @@
                             android:textSize="16sp"
                             android:layout_marginTop="5dp"/>
                         <TextView
+                            android:id="@+id/tvNamaLengkap"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Muhammad Sumbul"
@@ -60,6 +61,7 @@
                             android:orientation="horizontal"
                             android:layout_marginTop="5dp">
                             <TextView
+                                android:id="@+id/tvTanggal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Senin, 20 Maret 2023"
@@ -72,6 +74,7 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_marginEnd="10dp"/>
                             <TextView
+                                android:id="@+id/tvKelas"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Kelas 1"
@@ -106,6 +109,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="20dp">
                     <TextView
+                        android:id="@+id/tvTotalBelajar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="10"
@@ -137,6 +141,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="20dp">
                     <TextView
+                        android:id="@+id/tvTotalXP"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="150"
@@ -167,6 +172,7 @@
                     android:orientation="vertical"
                     android:layout_marginTop="5dp">
                     <TextView
+                        android:id="@+id/tvTotalLatihan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="5"
@@ -311,6 +317,7 @@
                     app:drawableStartCompat="@drawable/ic_baseline_school_24" />
 
                 <TextView
+                    android:id="@+id/tvNamaSekolah"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
                     android:text="SD Negeri 9 Sumbul"
@@ -338,6 +345,7 @@
                     app:drawableStartCompat="@drawable/ic_baseline_email_24" />
 
                 <TextView
+                    android:id="@+id/tvEmail"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
                     android:text="Sumbul123@gmail.com"
@@ -365,6 +373,7 @@
                     app:drawableStartCompat="@drawable/ic_baseline_date_range_24" />
 
                 <TextView
+                    android:id="@+id/tvTanggalLahir"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
                     android:text="30 April 2010"
@@ -391,6 +400,7 @@
                     android:layout_gravity="center" />
 
                 <TextView
+                    android:id="@+id/tvJenisKelamin"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
                     android:text="Laki-Laki"

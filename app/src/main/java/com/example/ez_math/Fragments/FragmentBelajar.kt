@@ -1,5 +1,6 @@
 package com.example.ez_math.Fragments
 
+//import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,8 @@ import android.widget.ExpandableListView
 import android.widget.ExpandableListView.OnChildClickListener
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.example.ez_math.R
 import com.example.ez_math.adapter.ExpandableListViewAdapter
 
@@ -81,12 +84,17 @@ class FragmentBelajar : Fragment() {
 
         // Listview on child click listener
         expandableListView.setOnChildClickListener(OnChildClickListener { parent, v, groupPosition, childPosition, id ->
-            Toast.makeText(
-                context,
-                "wow, this is - " + (listMateri.get(listKelas.get(groupPosition))
-                    ?.get(childPosition) ?: String),
-                Toast.LENGTH_SHORT
-            ).show()
+            val arguments = Bundle()
+            arguments.putString("materi_name", listMateri.get(listKelas.get(groupPosition))?.get(childPosition))
+
+            val fragment: Fragment = DetailMateri()
+            fragment.arguments = arguments
+
+            val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragmentContainer, fragment)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
             false
         })
     }

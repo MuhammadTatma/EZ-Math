@@ -20,6 +20,8 @@ import kotlin.math.roundToInt
 
 class LatihanActivity : AppCompatActivity() {
     lateinit var firestore: FirebaseFirestore
+    private var student = com.example.ez_math.modhel.Student
+    lateinit var adapter: QuizAdapter
     lateinit var tvSoal: TextView
     lateinit var tvJmlhSoal: TextView
     lateinit var tvWaktu: TextView
