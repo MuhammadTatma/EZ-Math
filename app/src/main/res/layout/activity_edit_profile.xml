@@ -91,6 +91,7 @@
                 android:textColor="@color/Color_1"/>
 
             <EditText
+                android:id="@+id/etNamaLengkap"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="5dp"
@@ -113,6 +114,7 @@
                 android:layout_marginTop="15dp"/>
 
             <EditText
+                android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="5dp"
@@ -153,6 +155,7 @@
                 android:layout_marginTop="5dp">
 
                 <EditText
+                    android:id="@+id/etNamaSekolah"
                     android:layout_width="230dp"
                     android:layout_height="40dp"
                     android:importantForAutofill="no"
@@ -164,6 +167,7 @@
                     tools:ignore="RtlSymmetry,TouchTargetSizeCheck" />
 
                 <EditText
+                    android:id="@+id/etKelas"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginStart="10dp"
@@ -206,6 +210,7 @@
                 android:orientation="horizontal">
 
                 <EditText
+                    android:id="@+id/etTanggalLahir"
                     android:layout_width="180dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="5dp"
@@ -250,6 +255,7 @@
                 android:layout_marginTop="15dp"/>
 
             <EditText
+                android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="5dp"
