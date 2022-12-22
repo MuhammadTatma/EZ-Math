@@ -48,6 +48,7 @@
             android:exported="true">
 
         </activity>
+        <service android:name=".TimerService"/>
     </application>
 
 </manifest>

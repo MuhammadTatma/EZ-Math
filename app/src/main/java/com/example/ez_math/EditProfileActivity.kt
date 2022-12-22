@@ -27,7 +27,9 @@ class EditProfileActivity : AppCompatActivity() {
 
         val btnOpenProfile = findViewById<ImageView>(R.id.btnToProfile)
         btnOpenProfile.setOnClickListener {
-            moveToFragment(FragmentProfile())
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("from", "pengaturanProfile")
+            startActivity(intent)
         }
 
         findView()
@@ -52,11 +54,6 @@ class EditProfileActivity : AppCompatActivity() {
         etPassword = findViewById(R.id.etPassword)
     }
 
-    private fun moveToFragment(fragment: Fragment)
-    {
-        val fragmentTrans = supportFragmentManager.beginTransaction()
-        fragmentTrans.replace(R.id.fragmentContainer, fragment)
-        fragmentTrans.commit()
-    }
+
 
 }

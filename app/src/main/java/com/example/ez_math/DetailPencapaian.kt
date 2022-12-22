@@ -16,6 +16,7 @@ class DetailPencapaian : AppCompatActivity() {
 
         btnKembali.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("from", "detailPencapaian")
             startActivity(intent)
         }
     }
