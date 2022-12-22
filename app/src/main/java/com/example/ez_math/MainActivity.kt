@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
             when(value){
                 "detailPencapaian" -> moveToFragment(FragmentPencapaian())
                 "pengaturanProfile" -> moveToFragment(FragmentProfile())
+                "hasilLatihan" -> moveToFragment(FragmentPencapaian())
                 else -> moveToFragment(Home())
             }
         }else{

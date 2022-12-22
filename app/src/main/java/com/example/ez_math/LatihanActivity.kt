@@ -21,7 +21,6 @@ import kotlin.math.roundToInt
 class LatihanActivity : AppCompatActivity() {
     lateinit var firestore: FirebaseFirestore
     private var student = com.example.ez_math.modhel.Student
-    lateinit var adapter: QuizAdapter
     lateinit var tvSoal: TextView
     lateinit var tvJmlhSoal: TextView
     lateinit var tvWaktu: TextView
@@ -36,7 +35,7 @@ class LatihanActivity : AppCompatActivity() {
     var quizzes: MutableList<Quiz>? = null
     var index = 1
     var listSoal: MutableMap<String, Question>? = mutableMapOf()
-    var kelasDipilih: String = ""
+    var kelasDipilih: String? = "kelas2"
 
     private lateinit var binding: ActivityLatihanBinding
     private var timerStarted = false
@@ -45,6 +44,11 @@ class LatihanActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val extra = intent.extras
+        if(extra != null){
+            kelasDipilih = extra.getString("kelas")
+        }
+
         setContentView(R.layout.activity_latihan)
         findViewId()
         setUpFireStore()
@@ -146,9 +150,10 @@ class LatihanActivity : AppCompatActivity() {
 
     private fun setUpFireStore() {
         firestore = FirebaseFirestore.getInstance()
-        firestore.collection("Quizzes").whereEqualTo("title", "kelas1")
+        firestore.collection("Quizzes").whereEqualTo("title", kelasDipilih)
             .get()
             .addOnSuccessListener {
+                Log.d("p","hasil : ${it.documents}")
                 if(it != null && !it.isEmpty){
                     quizzes = it.toObjects(Quiz::class.java)
                     listSoal = quizzes!![0].questions

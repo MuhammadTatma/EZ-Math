@@ -35,15 +35,9 @@ class Home : Fragment() {
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
-
-
-
         }
-
     }
 
-    var pilihanKelas: String = ""
-    val KUNCI = "BuatLatihan"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,25 +52,23 @@ class Home : Fragment() {
         val ivKelas6 = view.findViewById<ImageView>(R.id.ivKelas6)
 
 
-
-
         ivKelas1.setOnClickListener {
-            fLatihan(ivKelas1)
+            fLatihan("kelas1")
         }
         ivKelas2.setOnClickListener {
-            fLatihan(ivKelas2)
+            fLatihan("kelas2")
         }
         ivKelas3.setOnClickListener {
-            fLatihan(ivKelas3)
+            fLatihan("kelas3")
         }
         ivKelas4.setOnClickListener {
-            fLatihan(ivKelas4)
+            fLatihan("kelas4")
         }
         ivKelas5.setOnClickListener {
-            fLatihan(ivKelas5)
+            fLatihan("kelas5")
         }
         ivKelas6.setOnClickListener {
-            fLatihan(ivKelas6)
+            fLatihan("kelas6")
         }
 
         return view
@@ -84,13 +76,17 @@ class Home : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val tvNamaUser = view.findViewById<TextView>(R.id.tvNamaUser)
-
-//        var argument = arguments
-//        var namaPengguna = argument!!.getString("namaPengguna")
         tvNamaUser.setText(student.namaPengguna)
     }
+
+    fun fLatihan(kelas: String){
+        val intentKeLatihan = Intent(context, LatihanActivity::class.java)
+        intentKeLatihan.putExtra("kelas", kelas)
+        startActivity(intentKeLatihan)
+    }
+
+
 
     companion object {
         /**
@@ -113,15 +109,5 @@ class Home : Fragment() {
     }
 
 
-    fun fLatihan(view: View){
-        pilihanKelas = view.tag.toString()
 
-        val intentKeLatihan = Intent(context, LatihanActivity::class.java)
-//        intentKeLatihan.putExtra(KUNCI, pilihanKelas)
-        intentKeLatihan.apply {
-            putExtra(KUNCI, pilihanKelas)
-        }
-        startActivity(intentKeLatihan)
-
-    }
 }

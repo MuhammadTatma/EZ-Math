@@ -33,7 +33,10 @@ class HasilLatihan : AppCompatActivity() {
 
         val btnKePencapaian = findViewById<LinearLayout>(R.id.toPencapaian)
         btnKePencapaian.setOnClickListener {
-            moveToFragment(FragmentPencapaian())
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("from", "hasilLatihan")
+            startActivity(intent)
+
         }
     }
 

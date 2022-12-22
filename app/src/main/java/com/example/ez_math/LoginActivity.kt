@@ -129,9 +129,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun addData(){
-        val datane = hashMapOf("questions" to
+        val datane = hashMapOf(
+            "title" to "kelas6",
+            "questions" to
                 hashMapOf(
-                    "title" to "kelas2",
                     "question1" to hashMapOf(
                         "answer" to "4",
                         "description" to "2+2",
