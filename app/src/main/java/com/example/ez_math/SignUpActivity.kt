@@ -5,11 +5,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit  var tvLoginLink:TextView
@@ -19,12 +22,15 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var etPassword:EditText
     private lateinit var  progressBar:ProgressBar
     val auth: FirebaseAuth = FirebaseAuth.getInstance()
+    val db = Firebase.firestore
+    private val student = com.example.ez_math.modhel.Student
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
         findView()
+
 
         tvLoginLink.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
@@ -63,7 +69,7 @@ class SignUpActivity : AppCompatActivity() {
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task->
                         if(task.isSuccessful){
-                            saveUserIngpo(namaLengkap,email)
+                            saveUserToFirestore(namaLengkap, email)
                         }else{
                             val message = task.exception!!.toString()
                             auth.signOut()
@@ -77,6 +83,55 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun myToast(text: String){
         Toast.makeText(applicationContext, text, Toast.LENGTH_LONG).show()
+    }
+
+    private fun saveUserToFirestore(namaLengkap: String, email: String){
+        val currentUserId = FirebaseAuth.getInstance().currentUser!!.uid
+
+        val userMap = HashMap<String,Any>()
+        userMap["uid"] = currentUserId
+        userMap["namaLengkap"] = namaLengkap
+        userMap["email"] = email
+        userMap["namaPengguna"] = namaLengkap
+        userMap["namaSekolah"] = ""
+        userMap["kelas"] = 0
+        userMap["totalBelajar"] = 0
+        userMap["totalLatihan"] = 0
+        userMap["totalXp"] = 0
+        userMap["tanggalLahir"] = "00-00-0000"
+        userMap["jenisKelamin"] = ""
+        userMap["profilImage"] = "https://firebasestorage.googleapis.com/v0/b/ezmath-45ad1.appspot.com/o/Default%20Image%2Fprofile.png?alt=media&token=9ca73d03-6b6c-4982-9f43-6752485247fe"
+
+
+        db.collection("Users").document(currentUserId)
+            .set(userMap)
+            .addOnCompleteListener {
+                Toast.makeText(application, "User Data Saved Successfully to Firestore", Toast.LENGTH_SHORT).show()
+
+                student.email = email
+                student.kelas = 0
+                student.namaLengkap = namaLengkap
+                student.namaPengguna = namaLengkap
+                student.namaSekolah = ""
+                student.profilImage = "https://firebasestorage.googleapis.com/v0/b/ezmath-45ad1.appspot.com/o/Default%20Image%2Fprofile.png?alt=media&token=9ca73d03-6b6c-4982-9f43-6752485247fe"
+                student.totalLatihan = 0
+                student.totalXp = 0
+                student.totalBelajar = 0
+                student.jenisKelamin = ""
+                student.tanggalLahir = "00-00-0000"
+                student.uid = currentUserId
+
+                //pindah ke halaman utama
+                val intent = Intent(this@SignUpActivity, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+                finish()
+            }
+            .addOnFailureListener {
+                    e -> Toast.makeText(application, e.message.toString(), Toast.LENGTH_SHORT)
+                .show()
+                Log.e("Firestore", e.message.toString())
+            }
     }
 
     private fun saveUserIngpo(namaLengkap:String, email:String){
@@ -101,11 +156,7 @@ class SignUpActivity : AppCompatActivity() {
                     progressBar.visibility = View.GONE
                     myToast("Alhamdulillah gess berhasil")
 
-                    //pindah ke halaman utama
-                    val intent = Intent(this@SignUpActivity, MainActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(intent)
-                    finish()
+
                 }else{
                     val message = task.exception!!.toString()
                     auth.signOut()

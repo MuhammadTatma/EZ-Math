@@ -2,12 +2,15 @@ package com.example.ez_math.Fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import com.example.ez_math.R
+import com.example.ez_math.modhel.Student
 import com.example.ez_math.LatihanActivity as LatihanActivity
 
 // TODO: Rename parameter arguments, choose names that match
@@ -25,12 +28,18 @@ class Home : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private var student = com.example.ez_math.modhel.Student
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+
+
+
         }
+
     }
 
     var pilihanKelas: String = ""
@@ -47,6 +56,9 @@ class Home : Fragment() {
         val ivKelas4 = view.findViewById<ImageView>(R.id.ivKelas4)
         val ivKelas5 = view.findViewById<ImageView>(R.id.ivKelas5)
         val ivKelas6 = view.findViewById<ImageView>(R.id.ivKelas6)
+
+
+
 
         ivKelas1.setOnClickListener {
             fLatihan(ivKelas1)
@@ -68,6 +80,16 @@ class Home : Fragment() {
         }
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val tvNamaUser = view.findViewById<TextView>(R.id.tvNamaUser)
+
+//        var argument = arguments
+//        var namaPengguna = argument!!.getString("namaPengguna")
+        tvNamaUser.setText(student.namaPengguna)
     }
 
     companion object {
